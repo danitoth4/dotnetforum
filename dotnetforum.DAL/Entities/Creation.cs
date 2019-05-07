@@ -14,7 +14,7 @@ namespace dotnetforum.DAL.Entities
 
         public string Description { get; set; }
 
-        public ICollection<Review> Reviews { get; set; }
+        public ICollection<Review> Reviews { get; } = new List<Review>();
 
     }
 }

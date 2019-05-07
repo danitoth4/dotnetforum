@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dotnetforum.DAL;
 
 namespace dotnetforum.DAL.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20190507125245_uses_added")]
+    partial class uses_added
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -110,16 +112,6 @@ namespace dotnetforum.DAL.Migrations
                     b.Property<string>("Author");
 
                     b.HasDiscriminator().HasValue("Book");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            CreatedAt = new DateTime(2019, 5, 7, 15, 22, 51, 849, DateTimeKind.Local).AddTicks(186),
-                            Description = "yo",
-                            Title = "ttl",
-                            Author = "mr. author"
-                        });
                 });
 
             modelBuilder.Entity("dotnetforum.DAL.Entities.Movie", b =>

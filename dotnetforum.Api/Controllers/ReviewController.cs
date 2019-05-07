@@ -14,7 +14,6 @@ namespace dotnetforum.Api.Controllers
     public class ReviewController : ControllerBase
     {
         private readonly IReviewService reviewService;
-        private Task reviewSe;
 
         public ReviewController(IReviewService service) : base()
         {
@@ -29,7 +28,7 @@ namespace dotnetforum.Api.Controllers
         }
 
         // GET: api/Review/5
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "GetReview")]
         public async Task<ActionResult<Review>> Get(int id)
         {
             return await reviewService.GetReviewAsync(id);
@@ -56,7 +55,7 @@ namespace dotnetforum.Api.Controllers
             return NoContent();
         }
 
-        // DELETE: api/ApiWithActions/5
+        // DELETE: api/Review/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {

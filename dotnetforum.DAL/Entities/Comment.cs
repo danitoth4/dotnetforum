@@ -14,7 +14,7 @@ namespace dotnetforum.DAL.Entities
 
         public Review Review { get; set; }
 
-        public DateTime WritenAt { get; }
+        public DateTime WritenAt { get; set;  } = DateTime.Now;
 
         public User User { get; set; }
 

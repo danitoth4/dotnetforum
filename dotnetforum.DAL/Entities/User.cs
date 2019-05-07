@@ -10,9 +10,9 @@ namespace dotnetforum.DAL.Entities
 
         public string UserName { get; set; }
 
-        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+        public ICollection<Review> Reviews { get; } = new List<Review>();
 
-        public ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; } = new List<Comment>();
 
 
     }
