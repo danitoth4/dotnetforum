@@ -1,0 +1,1 @@
+export const SERVER = "https://localhost:44346";
