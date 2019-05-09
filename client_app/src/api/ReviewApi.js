@@ -29,7 +29,7 @@ class ReviewApi
 
     static async saveReview(review)
     {
-        let headers = new Headers;
+        let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         const options =
             {
@@ -37,7 +37,7 @@ class ReviewApi
                 body: JSON.stringify(review)
             };
         let url = SERVER_URL; 
-        if(review.id && review.id != 0)
+        if(review.id && review.id !== 0)
         {
             options.method = "put";
             url = `${url}/${review.id}`;
@@ -58,3 +58,5 @@ class ReviewApi
         return fetch(`${SERVER_URL}/${id}`, options);
     }
 }
+
+export default ReviewApi;
