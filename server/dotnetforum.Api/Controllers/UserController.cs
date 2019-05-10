@@ -23,7 +23,7 @@ namespace dotnetforum.Api.Controllers
 
         // GET: api/User
         [HttpGet]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<ActionResult<IEnumerable<ApplicationUser>>> Get()
         {
             return (await userService.GetUsersAsync()).ToList();

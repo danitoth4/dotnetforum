@@ -50,6 +50,12 @@ namespace dotnetforum.Api
          
             services.AddSwaggerDocument();
 
+            services.AddAuthorization( options =>
+                    {
+                        options.AddPolicy("OwnerOrAdmin", policy => policy.Requirements.Add(new OwnerRequirement()));
+                    }
+                );
+
             services.AddSingleton<IAuthorizationHandler, OwnerOrAdminRequirementHandler>();
 
             services.AddTransient<IReviewService, ReviewService>();
