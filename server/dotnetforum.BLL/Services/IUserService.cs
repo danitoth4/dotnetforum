@@ -8,13 +8,13 @@ namespace dotnetforum.BLL.Services
 {
     public interface IUserService
     {
-        Task<User> GetUserAsync(int userId);
+        Task<ApplicationUser> GetUserAsync(int userId);
 
-        Task<IEnumerable<User>> GetUsersAsync();
+        Task<IEnumerable<ApplicationUser>> GetUsersAsync();
 
-        Task<User> InsertUserAsync(User newUser);
+        Task<ApplicationUser> InsertUserAsync(ApplicationUser newUser);
 
-        Task UpdateUserAsync(int userId, User updatedUser);
+        Task UpdateUserAsync(int userId, ApplicationUser updatedUser);
 
         Task DeleteUserAsync(int userId);
     }

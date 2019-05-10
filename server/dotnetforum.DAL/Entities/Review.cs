@@ -21,7 +21,7 @@ namespace dotnetforum.DAL.Entities
 
         public int UserId { get; set; }
 
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
 
         public ICollection<Comment> Comments { get; } = new List<Comment>();
     }

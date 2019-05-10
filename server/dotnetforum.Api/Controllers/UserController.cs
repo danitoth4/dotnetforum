@@ -22,21 +22,21 @@ namespace dotnetforum.Api.Controllers
 
         // GET: api/User
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> Get()
+        public async Task<ActionResult<IEnumerable<ApplicationUser>>> Get()
         {
             return (await userService.GetUsersAsync()).ToList();
         }
 
         // GET: api/User/5
         [HttpGet("{id}", Name = "GetUser")]
-        public async Task<ActionResult<User>> Get(int id)
+        public async Task<ActionResult<ApplicationUser>> Get(int id)
         {
             return await userService.GetUserAsync(id);
         }
 
         // POST: api/User
         [HttpPost]
-        public async Task<ActionResult<User>> Post([FromBody] User user)
+        public async Task<ActionResult<ApplicationUser>> Post([FromBody] ApplicationUser user)
         {
             var newUser = await userService.InsertUserAsync(user);
 
@@ -48,7 +48,7 @@ namespace dotnetforum.Api.Controllers
 
         // PUT: api/User/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, [FromBody] User user)
+        public async Task<IActionResult> Put(int id, [FromBody] ApplicationUser user)
         {
             await userService.UpdateUserAsync(id, user);
 

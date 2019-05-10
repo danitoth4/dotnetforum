@@ -16,7 +16,7 @@ namespace dotnetforum.DAL.Entities
 
         public DateTime WritenAt { get; set;  } = DateTime.Now;
 
-        public User User { get; set; }
+        public ApplicationUser User { get; set; }
 
         public int? UserId { get; set; }
     }

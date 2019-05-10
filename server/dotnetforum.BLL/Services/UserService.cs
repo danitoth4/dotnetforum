@@ -18,7 +18,7 @@ namespace dotnetforum.BLL.Services
             this.context = context;
         }
 
-        public async Task<User> GetUserAsync(int userId)
+        public async Task<ApplicationUser> GetUserAsync(int userId)
         {
             return await context.Users
                 .Include(u => u.Comments)
@@ -26,7 +26,7 @@ namespace dotnetforum.BLL.Services
                     .SingleOrDefaultAsync(u => u.Id == userId) ?? throw new EntityNotFoundException("The user could not be found");
         }
 
-        public async Task<IEnumerable<User>> GetUsersAsync()
+        public async Task<IEnumerable<ApplicationUser>> GetUsersAsync()
         {
             var users = await context.Users
                 .Include(u => u.Comments)
@@ -36,7 +36,7 @@ namespace dotnetforum.BLL.Services
             return users;
         }
 
-        public async Task<User> InsertUserAsync(User newUser)
+        public async Task<ApplicationUser> InsertUserAsync(ApplicationUser newUser)
         {
             context.Users.Add(newUser);
 
@@ -45,7 +45,7 @@ namespace dotnetforum.BLL.Services
             return newUser;
         }
 
-        public async Task UpdateUserAsync(int userId, User updatedUser)
+        public async Task UpdateUserAsync(int userId, ApplicationUser updatedUser)
         {
             updatedUser.Id = userId;
             var entry = context.Attach(updatedUser);
@@ -55,7 +55,7 @@ namespace dotnetforum.BLL.Services
 
         public async Task DeleteUserAsync(int userId)
         {
-            context.Users.Remove(new User { Id = userId });
+            context.Users.Remove(new ApplicationUser { Id = userId });
 
             try
             {
