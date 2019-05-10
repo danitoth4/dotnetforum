@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dotnetforum.DAL;
 
 namespace dotnetforum.DAL.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20190510191156_user_handling")]
+    partial class user_handling
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -262,7 +264,7 @@ namespace dotnetforum.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2019, 5, 10, 23, 37, 27, 321, DateTimeKind.Local).AddTicks(5933),
+                            CreatedAt = new DateTime(2019, 5, 10, 21, 11, 56, 320, DateTimeKind.Local).AddTicks(7360),
                             Description = "yo",
                             Title = "ttl",
                             Author = "mr. author"

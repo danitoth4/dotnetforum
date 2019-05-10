@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using dotnetforum.BLL.Services;
 using dotnetforum.DAL.Entities;
+using IdentityModel.Client;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -23,6 +25,7 @@ namespace dotnetforum.Api.Controllers
 
         // GET: api/Review
         [HttpGet]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<ActionResult<IEnumerable<Review>>> Get()
         {
             return (await reviewService.GetReviewsAsync()).ToList();
@@ -49,6 +52,7 @@ namespace dotnetforum.Api.Controllers
 
         // PUT: api/Review/5
         [HttpPut("{id}")]
+        //[Authorize(Policy = "ResourceOwner or Admin")]
         public async Task<IActionResult> Put(int id, [FromBody] Review review)
         {
             await reviewService.UpdateReviewAsync(id, review);

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using dotnetforum.BLL.Services;
 using dotnetforum.DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,7 @@ namespace dotnetforum.Api.Controllers
 
         // GET: api/User
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<ApplicationUser>>> Get()
         {
             return (await userService.GetUsersAsync()).ToList();
