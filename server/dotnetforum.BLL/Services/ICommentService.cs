@@ -8,7 +8,7 @@ namespace dotnetforum.BLL.Services
 {
     public interface ICommentService
     {
-        //Task<Comment> GetCommentAsync(int commentId);
+        Task<Comment> GetCommentAsync(int commentId);
 
         //Task<IEnumerable<Comment>> GetCommentsAsync();
 

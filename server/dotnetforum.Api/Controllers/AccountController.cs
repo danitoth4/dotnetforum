@@ -29,8 +29,24 @@ namespace dotnetforum.Api.Controllers
             var result = await _userManager.CreateAsync(user, registerUserDTO.Password);
             if (!string.IsNullOrWhiteSpace(registerUserDTO.Level))
                 await _userManager.AddClaimAsync(user,
-                new Claim(nameof(registerUserDTO.Level), registerUserDTO.Level));
+                new Claim(nameof(registerUserDTO.Level), registerUserDTO.Level));
+
             return Ok();
-        }
+        }
+
+        public async Task<IActionResult> Delete()
+        {
+            var user = await _userManager.GetUserAsync(this.HttpContext.User);
+            var result = await _userManager.DeleteAsync(user);
+            if (result.Succeeded)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+
     }
 }

@@ -18,6 +18,14 @@ namespace dotnetforum.BLL.Services
             this.context = context;
         }
 
+        public async Task<Comment> GetCommentAsync(int reviewId)
+        {
+            return await context.Comments
+                .Include(r => r.Review)
+                .Include(r => r.User)
+                    .SingleOrDefaultAsync(r => r.Id == reviewId) ?? throw new EntityNotFoundException("The review could not be found");
+        }
+
 
         public async Task<Comment> InsertCommentAsync(Comment newComment)
         {

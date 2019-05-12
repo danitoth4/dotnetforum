@@ -56,8 +56,7 @@ namespace dotnetforum.Api
                     }
                 );
 
-            services.AddSingleton<IAuthorizationHandler, OwnerOrAdminRequirementHandler>();
-
+            services.AddTransient<IAuthorizationHandler, OwnerOrAdminRequirementHandler>();
             services.AddTransient<IReviewService, ReviewService>();
             services.AddTransient<ICommentService, CommentService>();
             services.AddTransient<IUserService, UserService>();
@@ -68,10 +67,14 @@ namespace dotnetforum.Api
 
             services.AddIdentity<ApplicationUser, ApplicationRole>()
                 .AddEntityFrameworkStores<Context>()
-                .AddDefaultTokenProviders();            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddDefaultTokenProviders();
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(
                     json => json.SerializerSettings.ReferenceLoopHandling
-                            = ReferenceLoopHandling.Ignore);            services.AddIdentityServer()
+                            = ReferenceLoopHandling.Ignore);
+
+            services.AddIdentityServer()
                  .AddDeveloperSigningCredential()
                  .AddInMemoryPersistedGrants()
                  .AddInMemoryIdentityResources(Config.GetIdentityResources())

@@ -33,7 +33,7 @@ namespace dotnetforum.Api.Controllers
 
         // GET: api/Review/5
         [HttpGet("{id}", Name = "GetReview")]
-        [Authorize(AuthenticationSchemes = "Bearer", Policy = "OwnerOrAdmin")]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<ActionResult<Review>> Get(int id)
         {
             return await reviewService.GetReviewAsync(id);
