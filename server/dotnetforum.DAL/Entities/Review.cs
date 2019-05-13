@@ -17,12 +17,12 @@ namespace dotnetforum.DAL.Entities
 
         public int CreationId { get; set; }
 
-        public Creation Creation { get; set; }
+        public virtual Creation Creation { get; set; }
 
         public int UserId { get; set; }
 
-        public ApplicationUser User { get; set; }
+        public virtual ApplicationUser User { get; set; }
 
-        public ICollection<Comment> Comments { get; } = new List<Comment>();
+        public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
     }
 }

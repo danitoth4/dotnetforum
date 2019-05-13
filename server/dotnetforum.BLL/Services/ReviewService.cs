@@ -34,7 +34,7 @@ namespace dotnetforum.BLL.Services
                 .Include(r => r.Comments)
                 .Include(r => r.User)
                 .Include(r => r.Creation)
-                    .ToListAsync();
+                    .AsNoTracking().ToListAsync();
 
             return reviews;
         }

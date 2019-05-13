@@ -12,10 +12,10 @@ namespace dotnetforum.BLL.Services
 
         Task<IEnumerable<Creation>> GetCreationsAsync();
 
-        Task<Creation> InsertCreationAsync(Creation newCreation);
+        //Task<Creation> InsertCreationAsync(Creation newCreation);
 
-        Task UpdateCreationAsync(int creationId, Creation updatedCreation);
+        //Task UpdateCreationAsync(int creationId, Creation updatedCreation);
 
-        Task DeleteCreationAsync(int creationId);
+        //Task DeleteCreationAsync(int creationId);
     }
 }

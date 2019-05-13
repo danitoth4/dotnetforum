@@ -25,7 +25,6 @@ namespace dotnetforum.Api.Controllers
 
         // GET: api/Review
         [HttpGet]
-        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<ActionResult<IEnumerable<Review>>> Get()
         {
             return (await reviewService.GetReviewsAsync()).ToList();
@@ -33,7 +32,6 @@ namespace dotnetforum.Api.Controllers
 
         // GET: api/Review/5
         [HttpGet("{id}", Name = "GetReview")]
-        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<ActionResult<Review>> Get(int id)
         {
             return await reviewService.GetReviewAsync(id);
@@ -41,6 +39,7 @@ namespace dotnetforum.Api.Controllers
 
         // POST: api/Review
         [HttpPost]
+        [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<ActionResult<Review>> Post([FromBody] Review review)
         {
             var newReview = await reviewService.InsertReviewAsync(review);
@@ -53,7 +52,7 @@ namespace dotnetforum.Api.Controllers
 
         // PUT: api/Review/5
         [HttpPut("{id}")]
-        //[Authorize(Policy = "ResourceOwner or Admin")]
+        [Authorize(AuthenticationSchemes ="Bearer", Policy = "OwnerOrAdmin")]
         public async Task<IActionResult> Put(int id, [FromBody] Review review)
         {
             await reviewService.UpdateReviewAsync(id, review);
@@ -63,6 +62,7 @@ namespace dotnetforum.Api.Controllers
 
         // DELETE: api/Review/5
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = "Bearer", Policy = "OwnerOrAdmin")]
         public async Task<IActionResult> Delete(int id)
         {
             await reviewService.DeleteReviewAsync(id);

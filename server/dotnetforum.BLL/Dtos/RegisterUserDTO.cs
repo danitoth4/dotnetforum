@@ -16,6 +16,8 @@ namespace dotnetforum.BLL.Dtos
         [Required]
         public string Password { get; set; }
 
-        public string Level { get; set; }
-    }
+        public string Level { get; set; }
+
+    }
+
 }

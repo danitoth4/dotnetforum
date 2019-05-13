@@ -17,9 +17,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Logging;
 using Newtonsoft.Json;
 
 namespace dotnetforum.Api
@@ -59,6 +56,7 @@ namespace dotnetforum.Api
             services.AddTransient<IAuthorizationHandler, OwnerOrAdminRequirementHandler>();
             services.AddTransient<IReviewService, ReviewService>();
             services.AddTransient<ICommentService, CommentService>();
+            services.AddTransient<ICreationService, CreationService>();
             services.AddTransient<IUserService, UserService>();
 
             services.AddDbContext<Context>(o =>
@@ -80,7 +78,8 @@ namespace dotnetforum.Api
                  .AddInMemoryIdentityResources(Config.GetIdentityResources())
                  .AddInMemoryApiResources(Config.GetApiResources())
                  .AddInMemoryClients(Config.GetClients())
-                 .AddAspNetIdentity<ApplicationUser>();
+                 .AddAspNetIdentity<ApplicationUser>()
+                 .AddProfileService<ProfileService>();
 
 
             services.AddAuthentication("Bearer").AddIdentityServerAuthentication(options =>

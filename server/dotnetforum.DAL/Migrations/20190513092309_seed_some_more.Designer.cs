@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using dotnetforum.DAL;
 
 namespace dotnetforum.DAL.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20190513092309_seed_some_more")]
+    partial class seed_some_more
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,7 +211,7 @@ namespace dotnetforum.DAL.Migrations
                             Content = "yo mate good review you did there i agree",
                             ReviewId = 1,
                             UserId = 2,
-                            WritenAt = new DateTime(2019, 5, 9, 11, 33, 20, 363, DateTimeKind.Local).AddTicks(9066)
+                            WritenAt = new DateTime(2019, 5, 9, 11, 23, 9, 472, DateTimeKind.Local).AddTicks(5316)
                         },
                         new
                         {
@@ -217,7 +219,7 @@ namespace dotnetforum.DAL.Migrations
                             Content = "thanks",
                             ReviewId = 1,
                             UserId = 1,
-                            WritenAt = new DateTime(2019, 5, 11, 11, 33, 20, 363, DateTimeKind.Local).AddTicks(9859)
+                            WritenAt = new DateTime(2019, 5, 11, 11, 23, 9, 472, DateTimeKind.Local).AddTicks(6019)
                         },
                         new
                         {
@@ -225,7 +227,7 @@ namespace dotnetforum.DAL.Migrations
                             Content = "yo mate bad review you did there i disagree",
                             ReviewId = 2,
                             UserId = 1,
-                            WritenAt = new DateTime(2019, 5, 12, 11, 33, 20, 363, DateTimeKind.Local).AddTicks(9870)
+                            WritenAt = new DateTime(2019, 5, 12, 11, 23, 9, 472, DateTimeKind.Local).AddTicks(6031)
                         });
                 });
 
@@ -283,7 +285,7 @@ namespace dotnetforum.DAL.Migrations
                             CreationId = 1,
                             Rating = 4,
                             UserId = 1,
-                            WritenAt = new DateTime(2019, 4, 23, 11, 33, 20, 363, DateTimeKind.Local).AddTicks(3074)
+                            WritenAt = new DateTime(2019, 4, 23, 11, 23, 9, 471, DateTimeKind.Local).AddTicks(9596)
                         },
                         new
                         {
@@ -292,7 +294,7 @@ namespace dotnetforum.DAL.Migrations
                             CreationId = 2,
                             Rating = 2,
                             UserId = 2,
-                            WritenAt = new DateTime(2019, 5, 10, 11, 33, 20, 363, DateTimeKind.Local).AddTicks(4546)
+                            WritenAt = new DateTime(2019, 5, 10, 11, 23, 9, 472, DateTimeKind.Local).AddTicks(1037)
                         });
                 });
 
@@ -308,7 +310,7 @@ namespace dotnetforum.DAL.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedAt = new DateTime(2019, 2, 13, 11, 33, 20, 359, DateTimeKind.Local).AddTicks(8237),
+                            CreatedAt = new DateTime(2019, 2, 13, 11, 23, 9, 468, DateTimeKind.Local).AddTicks(1275),
                             Description = "yo",
                             Title = "ttl",
                             Author = "mr. author"
@@ -316,7 +318,7 @@ namespace dotnetforum.DAL.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedAt = new DateTime(2018, 5, 13, 11, 33, 20, 362, DateTimeKind.Local).AddTicks(5191),
+                            CreatedAt = new DateTime(2018, 5, 13, 11, 23, 9, 471, DateTimeKind.Local).AddTicks(2033),
                             Description = "this is a good movie",
                             Title = "Movie title"
                         });

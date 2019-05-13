@@ -8,9 +8,9 @@ namespace dotnetforum.DAL.Entities
     public class ApplicationUser  : IdentityUser<int>
     {
     
-        public ICollection<Review> Reviews { get; } = new List<Review>();
+        public virtual ICollection<Review> Reviews { get; } = new List<Review>();
 
-        public ICollection<Comment> Comments { get; } = new List<Comment>();
+        public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
 
 
     }

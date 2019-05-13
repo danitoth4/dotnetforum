@@ -39,8 +39,19 @@ namespace dotnetforum.Api.Identity
                         new Secret("secret".Sha256())
                     },
                     AllowedScopes = { "api1" }
-                }
+                },
+                new Client
+                {
+                    ClientId = "ccl",
+                    AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+                    ClientSecrets =
+                    {
+                        new Secret("sec".Sha512())
+                    },
+                    AllowedScopes = { "api1" }
+                },
             };
         }
-    }
+    }
+
 }

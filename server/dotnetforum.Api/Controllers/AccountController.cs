@@ -27,9 +27,9 @@ namespace dotnetforum.Api.Controllers
             var user = new ApplicationUser
             { UserName = registerUserDTO.UserName, Email = registerUserDTO.Email };
             var result = await _userManager.CreateAsync(user, registerUserDTO.Password);
-            if (!string.IsNullOrWhiteSpace(registerUserDTO.Level))
+            /*if (!string.IsNullOrWhiteSpace(registerUserDTO.Level))
                 await _userManager.AddClaimAsync(user,
-                new Claim(nameof(registerUserDTO.Level), registerUserDTO.Level));
+                new Claim(nameof(registerUserDTO.Level), registerUserDTO.Level));*/
 
             return Ok();
         }

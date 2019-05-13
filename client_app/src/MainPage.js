@@ -2,6 +2,7 @@ import React from 'react';
 import { Grid, Box, Heading, Button } from 'grommet';
 import ListItem from './components/ListItem';
 import ReviewApi from './api/ReviewApi';
+import TokenApi from './api/TokenApi';
 
 class MainPage extends React.Component
 {
@@ -19,6 +20,7 @@ class MainPage extends React.Component
                 }
             )
         );
+        TokenApi.getToken("asd", "Security_Microsoft4").then(token => console.log(token.access_token));
     }
 
     render()
@@ -27,7 +29,7 @@ class MainPage extends React.Component
             item =>
             {
                 return (
-                    <ListItem title = {item.creation.title} commentNo = {item.comments.length} created = {item.writenAt.slice(0,16).replace("T", " ")} content = {item.content}  />
+                    <ListItem key={item.id} id={item.id} title = {item.creation.title} commentNo = {item.comments.length} created = {item.writenAt.slice(0,16).replace("T", " ")} content = {item.content} review = {item}  />
                 );
             }
         );

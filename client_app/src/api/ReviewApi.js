@@ -2,8 +2,6 @@ import {SERVER} from "./serverUrl";
 
 const SERVER_URL = `${SERVER}/api/review`
 
-console.log("HOST:", SERVER_URL);
-
 class ReviewApi
 {
     static async getAllReviews()
