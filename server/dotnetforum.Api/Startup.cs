@@ -63,7 +63,7 @@ namespace dotnetforum.Api
                o.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"])
                .ConfigureWarnings(c => c.Throw(RelationalEventId.QueryClientEvaluationWarning)));
 
-            services.AddIdentity<ApplicationUser, ApplicationRole>()
+            services.AddIdentity<ApplicationUser, ApplicationRole>( options => options.ClaimsIdentity.UserIdClaimType = "sub")
                 .AddEntityFrameworkStores<Context>()
                 .AddDefaultTokenProviders();
 

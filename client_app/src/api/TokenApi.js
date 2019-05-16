@@ -16,7 +16,17 @@ class TokenApi
             body: body,
             method: "post"
         }
-        return fetch(SERVER_URL, options).then(response => response.json() );
+        return fetch(SERVER_URL, options).then(response => response.json().then( (token) => { sessionStorage.setItem('token', token.access_token); sessionStorage.setItem('my-id', this.parseJwt(token.access_token).sub); } ));
+    }
+
+    static parseJwt(token)
+    {
+        var base64Url = token.split('.')[1];
+        var base64 = decodeURIComponent(atob(base64Url).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+    
+        return JSON.parse(base64);
     }
 }
 

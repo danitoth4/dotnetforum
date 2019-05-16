@@ -1,5 +1,6 @@
 import React from 'react';
 import UserApi from '../api/UserApi';
+import { Link } from 'react-router-dom';
 
 class UserPage extends React.Component
 {
@@ -33,10 +34,19 @@ class UserPage extends React.Component
     {
         if(this.state.user)
         {
-            console.log(this.state.user)
+            const reviews = this.state.user.reviews.map(
+                review => 
+                {
+                    return (
+                        <div> <Link to = {{ pathname: `/review/${review.id}` }}>  <h3> {review.id} </h3>  </Link> </div> 
+                    ); 
+                } 
+            );
             return(
                 <div>
-                    {this.state.user.userName}
+                    <h1>{this.state.user.userName}</h1>
+                    <h2> Reviews </h2>
+                    {reviews}
                 </div>
             );
         }

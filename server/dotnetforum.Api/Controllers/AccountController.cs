@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using dotnetforum.BLL.Dtos;
 using dotnetforum.DAL.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +20,15 @@ namespace dotnetforum.Api.Controllers
         public AccountController(UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
+        }
+
+        [HttpGet(Name = "GetAccount")]
+
+        [Authorize(AuthenticationSchemes = "Bearer")]
+        public async Task<ActionResult<ApplicationUser>> Get()
+        {
+            var user = await _userManager.GetUserAsync(HttpContext.User);
+            return user;
         }
 
         [HttpPost]

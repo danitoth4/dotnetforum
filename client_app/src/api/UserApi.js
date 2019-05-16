@@ -13,6 +13,7 @@ class UserApi
 
         return fetch(`${SERVER_URL}/${id}`, options).then(response => response.json());
     }
+    
 }
 
 export default UserApi;

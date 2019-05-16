@@ -28,11 +28,12 @@ namespace dotnetforum.Api.Controllers
         [Authorize(AuthenticationSchemes = "Bearer")]
         public async Task<ActionResult<Comment>> Post([FromBody] Comment comment)
         {
+            comment.UserId = Int32.Parse(HttpContext.User.Claims.Where(c => c.Type == "sub").Single().Value);
             var newComment = await commentService.InsertCommentAsync(comment);
 
-            return CreatedAtAction(
-                    nameof(ReviewController.Get),
-                    new { id = newComment.Id }
+            return Created(
+                    "/api/review/{id}",
+                    new { id = newComment.ReviewId }
                 );
         }
 

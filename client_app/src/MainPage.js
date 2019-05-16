@@ -20,7 +20,7 @@ class MainPage extends React.Component
                 }
             )
         );
-        TokenApi.getToken("asd", "Security_Microsoft4").then(token => console.log(token.access_token));
+        TokenApi.getToken("asd", "Security_Microsoft4");
     }
 
     render()
@@ -51,8 +51,7 @@ class MainPage extends React.Component
                     background='white'>
                     <Heading level='2'>Reviews</Heading>
                     <Box direction="row" pad={{ horizontal: "small", }} gap="small" >
-                        <Button color="accent-3" label="Cancel" onClick={() => {console.log("clicked")}} />
-                        <Button label="Save" style={{ color: "white" }} primary={true} onClick={() => {console.log("clicked")}}/>
+                        <Button label="New" style={{ color: "white" }} primary={true} onClick={() => {console.log("clicked")}}/>
                     </Box>
                 </Box>
                 <Box gridArea='main' background='white' pad="medium" fill="vertical">

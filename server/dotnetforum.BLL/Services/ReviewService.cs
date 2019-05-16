@@ -22,16 +22,17 @@ namespace dotnetforum.BLL.Services
         public async Task<Review> GetReviewAsync(int reviewId)
         {
             return await context.Reviews
-                .Include(r => r.Comments)
+                .Include(r => r.Comments).ThenInclude(c => c.User)
                 .Include(r => r.User)
                 .Include(r => r.Creation)
-                    .SingleOrDefaultAsync(r => r.Id == reviewId) ?? throw new EntityNotFoundException("The review could not be found");
+                    .AsNoTracking()
+                        .SingleOrDefaultAsync(r => r.Id == reviewId) ?? throw new EntityNotFoundException("The review could not be found");
         }
 
         public async Task<IEnumerable<Review>> GetReviewsAsync()
         {
             var reviews = await context.Reviews
-                .Include(r => r.Comments)
+                .Include(r => r.Comments).ThenInclude(c => c.User)
                 .Include(r => r.User)
                 .Include(r => r.Creation)
                     .AsNoTracking().ToListAsync();
